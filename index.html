@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Salaire LSPD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Calculateur de Salaire LSPD</h1>
+    <form id="salaryForm">
+        <label for="name">Nom Prénom:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="grade">Grade:</label>
+        <select id="grade" name="grade" required>
+            <option value="Commandant">Commandant</option>
+            <option value="Capitaine">Capitaine</option>
+            <option value="Lieutenant Chef">Lieutenant Chef</option>
+            <option value="Lieutenant">Lieutenant</option>
+            <option value="Sergent Chef">Sergent Chef</option>
+            <option value="Sergent-II">Sergent-II</option>
+            <option value="Sergent">Sergent</option>
+            <option value="Officier-III">Officier-III</option>
+            <option value="Officier-II">Officier-II</option>
+            <option value="Officier-I">Officier-I</option>
+            <option value="Cadet">Cadet</option>
+        </select>
+
+        <label for="hours">Nombre d'heures:</label>
+        <input type="number" id="hours" name="hours" min="0" required>
+        
+        <label for="minutes">Nombre de minutes:</label>
+        <input type="number" id="minutes" name="minutes" min="0" max="59" required>
+        
+        <div class="button-group">
+            <button type="button" onclick="addEntry()">Ajouter</button>
+            <button type="button" onclick="resetTable()">Réinitialiser</button>
+        </div>
+    </form>
+    
+    <table id="salaryTable">
+        <thead>
+            <tr>
+                <th>Nom Prénom</th>
+                <th>Grade</th>
+                <th>Nombre d'heures</th>
+                <th>Salaire</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Fiches salaires -->
+        </tbody>
+    </table>
+    
+    <button type="button" onclick="sendResults()">Envoyer les résultats</button>
+    
+    <div id="otpModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Veuillez entrer le mot de passe à usage unique:</p>
+            <input type="text" id="otpInput">
+            <button type="button" onclick="verifyOTP()">Vérifier</button>
+        </div>
+    </div>
+    
+    <script src="config.js"></script>
+    <script src="script.js" type="module"></script>
+</body>
+</html>
