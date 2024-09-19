@@ -44,6 +44,8 @@ function addEntry() {
     const totalHours = hours + (minutes / 60);
     const baseSalary = salaries[grade];
     const totalSalary = baseSalary + (totalHours * hourlyRate);
+    const salary = calculateSalary(grade, hours, minutes);
+    const roundedSalary = Math.round(salary); // Arrondir à l'euro près
 
     const table = document.getElementById('salaryTable').getElementsByTagName('tbody')[0];
     const newRow = table.insertRow();
@@ -56,7 +58,14 @@ function addEntry() {
     nameCell.textContent = name;
     gradeCell.textContent = grade;
     hoursCell.textContent = `${hours}h ${minutes}m`;
-    salaryCell.textContent = totalSalary.toLocaleString('fr-FR') + ' $';
+    salaryCell.textContent = roundedSalary.toLocaleString('fr-FR') + ' $';
+}
+
+function calculateSalary(grade, hours, minutes) {
+    const baseSalary = salaries[grade];
+    const totalHours = hours + (minutes / 60);
+    const totalSalary = baseSalary + (totalHours * hourlyRate);
+    return totalSalary;
 }
 
 function resetTable() {
